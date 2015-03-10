@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.packt.masterjbpm6</groupId>
+	<artifactId>jbpm-remote-server</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<name>jBPM remote server Project</name>
+	<description>jBPM remote server (Chapter 8)</description>
+
+
+
+	<properties>
+		<jbpm.version>6.1.0.Final</jbpm.version>
+		<cxf.version>2.7.14</cxf.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.packt.masterjbpm6</groupId>
+			<artifactId>test-common</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.packt.masterjbpm6</groupId>
+			<artifactId>pizzamodel</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-executor</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-document</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-workitems</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<!-- JaxWS dependencies -->
+		<!-- <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-api</artifactId> 
+			<exclusions> <exclusion> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-javamail_1.4_spec</artifactId> 
+			</exclusion> </exclusions> <version>${cxf.version}</version> </dependency> 
+			<dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxws</artifactId> 
+			<version>${cxf.version}</version> </dependency> <dependency> <groupId>org.apache.cxf</groupId> 
+			<artifactId>cxf-rt-databinding-jaxb</artifactId> <version>${cxf.version}</version> 
+			</dependency> <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http</artifactId> 
+			<scope>runtime</scope> <version>${cxf.version}</version> </dependency> <dependency> 
+			<groupId>wsdl4j</groupId> <artifactId>wsdl4j</artifactId> <scope>runtime</scope> 
+			<version>RELEASE</version> </dependency> <dependency> <groupId>org.apache.neethi</groupId> 
+			<artifactId>neethi</artifactId> <scope>runtime</scope> <version>RELEASE</version> 
+			</dependency> <dependency> <groupId>org.apache.ws.xmlschema</groupId> <artifactId>xmlschema-core</artifactId> 
+			<scope>runtime</scope> <version>RELEASE</version> </dependency> <dependency> 
+			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http-jetty</artifactId> 
+			<scope>test</scope> <version>${cxf.version}</version> </dependency> -->
+		<!-- REST -->
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxrs</artifactId> 
+			<scope>test</scope> <version>${cxf.version}</version> </dependency> <dependency> 
+			<groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-databind</artifactId> 
+			<scope>test</scope> <version>RELEASE</version> </dependency> -->
+
+		<!-- remote API dependencies -->
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-services-client</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<!--jBoss dependency -->
+		<!-- same Wildfly versions -->
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-core-client</artifactId>
+			<version>2.4.1.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-jms-client</artifactId>
+			<version>2.4.1.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.remote.ws</groupId>
+			<artifactId>kie-remote-ws-wsdl-cmd</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.remote.ws</groupId>
+			<artifactId>kie-remote-ws-common</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- <dependency> <groupId>org.kie.remote.ws</groupId> <artifactId>kie-remote-ws-wsdl</artifactId> 
+			<version>6.1.0.Final</version> </dependency> -->
+
+
+
+		<!-- JNDI InitialContext -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-remote-naming</artifactId>
+			<version>2.0.1.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.xnio</groupId>
+			<artifactId>xnio-nio</artifactId>
+			<version>3.2.2.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
+		<!-- misc dependencies -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
+	</dependencies>
+</project>

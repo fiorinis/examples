@@ -1,0 +1,17 @@
+package defaultPackge
+
+global StringBuffer newnote;
+global com.packt.masterjbpm6.pizza.model.Order orderglobal;
+
+rule "checkorder" ruleflow-group "masterRuleGroup"
+    when
+        $o: com.packt.masterjbpm6.pizza.model.Order (cost>100)
+    then
+    {
+    	System.out.println ("checkorder triggered");
+    	String desc="big order ! (cost="+$o.getCost()+")";
+    	orderglobal.setNote("URGENT");
+    	newnote.append (desc);
+    	//channels["testchannel"].send("urgent!");
+    }
+end

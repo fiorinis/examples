@@ -1,0 +1,1350 @@
+<?xml version="1.0" ?>
+<wsdl:definitions
+  xmlns="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+  
+  xmlns:ns1="http://schemas.xmlsoap.org/soap/http" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:tns="http://services.remote.kie.org/6.1.0.1/command"
+
+ name="CommandService" 
+ targetNamespace="http://services.remote.kie.org/6.1.0.1/command">
+
+<wsdl:types xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema 
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+        jxb:extensionBindingPrefixes="xjc" 
+        jxb:version="1.0" 
+
+      xmlns:tns="http://services.remote.kie.org/6.1.0.1/command" 
+      targetNamespace="http://services.remote.kie.org/6.1.0.1/command" 
+      version="1.0">
+
+  <xs:element name="CommandServiceException" type="tns:WebServiceFaultInfo"></xs:element>
+
+  <xs:element name="abortWorkItemCommand" type="tns:abortWorkItemCommand"></xs:element>
+
+  <xs:element name="activate-task-command" type="tns:activateTaskCommand"></xs:element>
+
+  <xs:element name="add-task-command" type="tns:addTaskCommand"></xs:element>
+
+  <xs:element name="attachment" type="tns:jaxbAttachment"></xs:element>
+
+  <xs:element name="cancel-deadline-command" type="tns:cancelDeadlineCommand"></xs:element>
+
+  <xs:element name="claim-next-task-command" type="tns:claimNextAvailableTaskCommand"></xs:element>
+
+  <xs:element name="claim-task-command" type="tns:claimTaskCommand"></xs:element>
+
+  <xs:element name="clearHistoryLogsCommand" type="tns:clearHistoryLogsCommand"></xs:element>
+
+  <xs:element name="command-request" type="tns:jaxbCommandsRequest"></xs:element>
+
+  <xs:element name="command-response" type="tns:jaxbCommandsResponse"></xs:element>
+
+  <xs:element name="comment" type="tns:jaxbComment"></xs:element>
+
+  <xs:element name="complete-task-command" type="tns:completeTaskCommand"></xs:element>
+
+  <xs:element name="completeWorkItemCommand" type="tns:completeWorkItemCommand"></xs:element>
+
+  <xs:element name="content" type="tns:jaxbContent"></xs:element>
+
+  <xs:element name="content-response" type="tns:jaxbContentResponse"></xs:element>
+
+  <xs:element name="delegate-task-command" type="tns:delegateTaskCommand"></xs:element>
+
+  <xs:element name="dummy-deadlines" type="tns:jaxbDeadlines"></xs:element>
+
+  <xs:element name="exception" type="tns:jaxbExceptionResponse"></xs:element>
+
+  <xs:element name="execute" type="tns:execute"></xs:element>
+
+  <xs:element name="execute-task-rules-command" type="tns:executeTaskRulesCommand"></xs:element>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"></xs:element>
+
+  <xs:element name="exit-task-command" type="tns:exitTaskCommand"></xs:element>
+
+  <xs:element name="fact-handle" type="tns:defaultFactHandle"></xs:element>
+
+  <xs:element name="fail-task-command" type="tns:failTaskCommand"></xs:element>
+
+  <xs:element name="findActiveProcessInstancesCommand" type="tns:findActiveProcessInstancesCommand"></xs:element>
+
+  <xs:element name="findNodeInstancesCommand" type="tns:findNodeInstancesCommand"></xs:element>
+
+  <xs:element name="findProcessInstanceCommand" type="tns:findProcessInstanceCommand"></xs:element>
+
+  <xs:element name="findProcessInstancesCommand" type="tns:findProcessInstancesCommand"></xs:element>
+
+  <xs:element name="findSubProcessInstancesCommand" type="tns:findSubProcessInstancesCommand"></xs:element>
+
+  <xs:element name="findVariableInstancesByNameCommand" type="tns:findVariableInstancesByNameCommand"></xs:element>
+
+  <xs:element name="findVariableInstancesCommand" type="tns:findVariableInstancesCommand"></xs:element>
+
+  <xs:element name="forward-task-command" type="tns:forwardTaskCommand"></xs:element>
+
+  <xs:element name="get-attachment-command" type="tns:getAttachmentCommand"></xs:element>
+
+  <xs:element name="get-content-command" type="tns:getContentCommand"></xs:element>
+
+  <xs:element name="get-task-assigned-pot-owner-command" type="tns:getTaskAssignedAsPotentialOwnerCommand"></xs:element>
+
+  <xs:element name="get-task-by-owner-command" type="tns:getTasksOwnedCommand"></xs:element>
+
+  <xs:element name="get-task-by-proc-inst-id-command" type="tns:getTasksByProcessInstanceIdCommand"></xs:element>
+
+  <xs:element name="get-task-by-status-proc-inst-id-command" type="tns:getTasksByStatusByProcessInstanceIdCommand"></xs:element>
+
+  <xs:element name="get-task-by-various-fields-command" type="tns:getTasksByVariousFieldsCommand"></xs:element>
+
+  <xs:element name="get-task-by-work-item-command" type="tns:getTaskByWorkItemIdCommand"></xs:element>
+
+  <xs:element name="get-task-command" type="tns:getTaskCommand"></xs:element>
+
+  <xs:element name="get-task-content-command" type="tns:getTaskContentCommand"></xs:element>
+
+  <xs:element name="get-tasks-assigned-bus-admin-command" type="tns:getTaskAssignedAsBusinessAdminCommand"></xs:element>
+
+  <xs:element name="i18n-text" type="tns:jaxbI18NText"></xs:element>
+
+  <xs:element name="linked-list" type="tns:abstractBaseLinkedListNode"></xs:element>
+
+  <xs:element name="log-instance-list" type="tns:jaxbHistoryLogList"></xs:element>
+
+  <xs:element name="long-list" type="tns:jaxbLongListResponse"></xs:element>
+
+  <xs:element name="node-instance-log" type="tns:jaxbNodeInstanceLog"></xs:element>
+
+  <xs:element name="nominate-task-command" type="tns:nominateTaskCommand"></xs:element>
+
+  <xs:element name="organizational-entity" type="tns:jaxbOrganizationalEntity"></xs:element>
+
+  <xs:element name="other" type="tns:jaxbOtherResponse"></xs:element>
+
+  <xs:element name="people-assignments" type="tns:jaxbPeopleAssignments"></xs:element>
+
+  <xs:element name="primitive" type="tns:jaxbPrimitiveResponse"></xs:element>
+
+  <xs:element name="process-instance" type="tns:jaxbProcessInstanceResponse"></xs:element>
+
+  <xs:element name="process-instance-list" type="tns:jaxbProcessInstanceListResponse"></xs:element>
+
+  <xs:element name="process-instance-log" type="tns:jaxbProcessInstanceLog"></xs:element>
+
+  <xs:element name="process-sub-tasks-command" type="tns:processSubTaskCommand"></xs:element>
+
+  <xs:element name="release-task-command" type="tns:releaseTaskCommand"></xs:element>
+
+  <xs:element name="resume-task-command" type="tns:resumeTaskCommand"></xs:element>
+
+  <xs:element name="skip-task-command" type="tns:skipTaskCommand"></xs:element>
+
+  <xs:element name="start-task-command" type="tns:startTaskCommand"></xs:element>
+
+  <xs:element name="stop-task-command" type="tns:stopTaskCommand"></xs:element>
+
+  <xs:element name="string-list" type="tns:jaxbStringListResponse"></xs:element>
+
+  <xs:element name="suspend-task-command" type="tns:suspendTaskCommand"></xs:element>
+
+  <xs:element name="task" type="tns:jaxbTask"></xs:element>
+
+  <xs:element name="task-composite-command" type="tns:compositeCommand"></xs:element>
+
+  <xs:element name="task-content-response" type="tns:jaxbTaskContentResponse"></xs:element>
+
+  <xs:element name="task-data" type="tns:jaxbTaskData"></xs:element>
+
+  <xs:element name="task-response" type="tns:jaxbTaskResponse"></xs:element>
+
+  <xs:element name="task-summary" type="tns:jaxbTaskSummary"></xs:element>
+
+  <xs:element name="task-summary-list" type="tns:jaxbTaskSummaryListResponse"></xs:element>
+
+  <xs:element name="variable-instance-log" type="tns:jaxbVariableInstanceLog"></xs:element>
+
+  <xs:element name="variables" type="tns:jaxbVariablesResponse"></xs:element>
+
+  <xs:element name="work-item" type="tns:jaxbWorkItem"></xs:element>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:jaxbCommandsRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbCommandsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="deployment-id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="ver" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="user" type="xs:string"></xs:element>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element name="complete-work-item" type="tns:completeWorkItemCommand"></xs:element>
+        <xs:element name="abort-work-item" type="tns:abortWorkItemCommand"></xs:element>
+        <xs:element name="get-workitem" type="tns:getWorkItemCommand"></xs:element>
+        <xs:element name="abort-process-instance" type="tns:abortProcessInstanceCommand"></xs:element>
+        <xs:element name="get-process-ids" type="tns:getProcessIdsCommand"></xs:element>
+        <xs:element name="get-process-instance-by-correlation-key" type="tns:getProcessInstanceByCorrelationKeyCommand"></xs:element>
+        <xs:element name="get-process-instance" type="tns:getProcessInstanceCommand"></xs:element>
+        <xs:element name="get-process-instances" type="tns:getProcessInstancesCommand"></xs:element>
+        <xs:element name="set-process-instance-vars" type="tns:setProcessInstanceVariablesCommand"></xs:element>
+        <xs:element name="signal-event" type="tns:signalEventCommand"></xs:element>
+        <xs:element name="start-correlated-process" type="tns:startCorrelatedProcessCommand"></xs:element>
+        <xs:element name="start-process" type="tns:startProcessCommand"></xs:element>
+        <xs:element name="get-variable" type="tns:getVariableCommand"></xs:element>
+        <xs:element name="get-fact-count" type="tns:getFactCountCommand"></xs:element>
+        <xs:element name="get-global" type="tns:getGlobalCommand"></xs:element>
+        <xs:element name="get-id" type="tns:getIdCommand"></xs:element>
+        <xs:element name="set-global" type="tns:setGlobalCommand"></xs:element>
+        <xs:element name="delete" type="tns:deleteCommand"></xs:element>
+        <xs:element name="fire-all-rules" type="tns:fireAllRulesCommand"></xs:element>
+        <xs:element name="insert-object" type="tns:insertObjectCommand"></xs:element>
+        <xs:element name="update" type="tns:updateCommand"></xs:element>
+        <xs:element name="activate-task" type="tns:activateTaskCommand"></xs:element>
+        <xs:element name="add-task" type="tns:addTaskCommand"></xs:element>
+        <xs:element name="claim-next-available-task" type="tns:claimNextAvailableTaskCommand"></xs:element>
+        <xs:element name="claim-task" type="tns:claimTaskCommand"></xs:element>
+        <xs:element name="complete-task" type="tns:completeTaskCommand"></xs:element>
+        <xs:element name="delegate-task" type="tns:delegateTaskCommand"></xs:element>
+        <xs:element name="exit-task" type="tns:exitTaskCommand"></xs:element>
+        <xs:element name="fail-task" type="tns:failTaskCommand"></xs:element>
+        <xs:element name="forward-task" type="tns:forwardTaskCommand"></xs:element>
+        <xs:element name="get-attachment" type="tns:getAttachmentCommand"></xs:element>
+        <xs:element name="get-content" type="tns:getContentCommand"></xs:element>
+        <xs:element ref="tns:get-task-content-command"></xs:element>
+        <xs:element name="get-task-as-business-admin" type="tns:getTaskAssignedAsBusinessAdminCommand"></xs:element>
+        <xs:element name="get-task-as-potential-owner" type="tns:getTaskAssignedAsPotentialOwnerCommand"></xs:element>
+        <xs:element name="get-task-by-workitemid" type="tns:getTaskByWorkItemIdCommand"></xs:element>
+        <xs:element name="get-task" type="tns:getTaskCommand"></xs:element>
+        <xs:element name="get-tasks-by-processinstanceid" type="tns:getTasksByProcessInstanceIdCommand"></xs:element>
+        <xs:element name="get-tasks-by-status-by-processinstanceid" type="tns:getTasksByStatusByProcessInstanceIdCommand"></xs:element>
+        <xs:element name="get-tasks-by-various-command" type="tns:getTasksByVariousFieldsCommand"></xs:element>
+        <xs:element name="get-tasks-owned" type="tns:getTasksOwnedCommand"></xs:element>
+        <xs:element name="nominate-task" type="tns:nominateTaskCommand"></xs:element>
+        <xs:element name="release-task" type="tns:releaseTaskCommand"></xs:element>
+        <xs:element name="resume-task" type="tns:resumeTaskCommand"></xs:element>
+        <xs:element name="skip-task" type="tns:skipTaskCommand"></xs:element>
+        <xs:element name="start-task" type="tns:startTaskCommand"></xs:element>
+        <xs:element name="stop-task" type="tns:stopTaskCommand"></xs:element>
+        <xs:element name="suspend-task" type="tns:suspendTaskCommand"></xs:element>
+        <xs:element ref="tns:task-composite-command"></xs:element>
+        <xs:element ref="tns:process-sub-tasks-command"></xs:element>
+        <xs:element ref="tns:execute-task-rules-command"></xs:element>
+        <xs:element ref="tns:cancel-deadline-command"></xs:element>
+        <xs:element name="clear-history-logs" type="tns:clearHistoryLogsCommand"></xs:element>
+        <xs:element name="find-active-process-instances" type="tns:findActiveProcessInstancesCommand"></xs:element>
+        <xs:element name="find-node-instances" type="tns:findNodeInstancesCommand"></xs:element>
+        <xs:element name="find-process-instance" type="tns:findProcessInstanceCommand"></xs:element>
+        <xs:element name="find-process-instances" type="tns:findProcessInstancesCommand"></xs:element>
+        <xs:element name="find-subprocess-instances" type="tns:findSubProcessInstancesCommand"></xs:element>
+        <xs:element name="find-variable-instances" type="tns:findVariableInstancesCommand"></xs:element>
+        <xs:element name="find-variable-instances-by-name" type="tns:findVariableInstancesByNameCommand"></xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="completeWorkItemCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="result" type="tns:jaxbStringObjectPairArray"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:long" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbStringObjectPair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="abortWorkItemCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="id" type="xs:long" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkItemCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="workItemId" type="xs:long" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="abortProcessInstanceCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="processInstanceId" type="xs:long"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessIdsCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessInstanceByCorrelationKeyCommand">
+    <xs:sequence>
+      <xs:element name="correlation-key" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessInstanceCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="processInstanceId" type="xs:long" use="required"></xs:attribute>
+    <xs:attribute name="readOnly" type="xs:boolean" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessInstancesCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setProcessInstanceVariablesCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="variables" type="tns:jaxbStringObjectPairArray"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="processInstanceId" type="xs:long" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="signalEventCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="event" type="xs:anyType"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="process-instance-id" type="xs:long" use="required"></xs:attribute>
+    <xs:attribute name="event-type" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="startCorrelatedProcessCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correlation-key" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="parameter" type="tns:jaxbStringObjectPairArray"></xs:element>
+      <xs:element minOccurs="0" name="data">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="data" nillable="true" type="xs:anyType"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="processId" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="startProcessCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="parameter" type="tns:jaxbStringObjectPairArray"></xs:element>
+      <xs:element minOccurs="0" name="data">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="data" nillable="true" type="xs:anyType"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="processId" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="getVariableCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFactCountCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGlobalCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="getIdCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setGlobalCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="object" type="xs:anyType"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="deleteCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="fact-handle" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="fireAllRulesCommand">
+    <xs:sequence></xs:sequence>
+    <xs:attribute name="max" type="xs:int" use="required"></xs:attribute>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="insertObjectCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="object" type="xs:anyType"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="out-identifier" type="xs:string"></xs:attribute>
+    <xs:attribute name="return-object" type="xs:boolean" use="required"></xs:attribute>
+    <xs:attribute name="entry-point" type="xs:string"></xs:attribute>
+    <xs:attribute name="disconnected" type="xs:boolean" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="updateCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="taskCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="task-id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="user-id" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="group-id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="target-entity-id" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="jaxbTask" type="tns:jaxbTask"></xs:element>
+          <xs:element minOccurs="0" name="parameter" type="tns:jaxbStringObjectPairArray"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="priority" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="task-type" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="name" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="subject" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="description" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="names" type="tns:jaxbI18NText"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="subjects" type="tns:jaxbI18NText"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="descriptions" type="tns:jaxbI18NText"></xs:element>
+      <xs:element minOccurs="0" ref="tns:people-assignments"></xs:element>
+      <xs:element minOccurs="0" name="jaxbTaskData" type="tns:jaxbTaskData"></xs:element>
+      <xs:element minOccurs="0" name="deadlines" type="tns:jaxbDeadlines"></xs:element>
+      <xs:element minOccurs="0" name="form-name" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbI18NText">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="text" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="lang" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPeopleAssignments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="task-initiator" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="potential-owner" type="tns:jaxbOrganizationalEntity"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="business-administrator" type="tns:jaxbOrganizationalEntity"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="excluded-owners" type="tns:jaxbOrganizationalEntity"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="task-stakeholders" type="tns:jaxbOrganizationalEntity"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="recipients" type="tns:jaxbOrganizationalEntity"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbOrganizationalEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="type" type="tns:type"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTaskData">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbTaskObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="status" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="previous-status" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="actual-owner" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="created-by" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="created-on" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="activation-time" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="expiration-time" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="skipable" type="xs:boolean"></xs:element>
+          <xs:element minOccurs="0" name="work-item-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="document-type" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="document-content-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="output-type" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="output-content-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="fault-name" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="fault-type" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="fault-content-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="parent-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="process-session-id" type="xs:int"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:comment"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:attachment"></xs:element>
+          <xs:element minOccurs="0" name="deployment-id" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="abstractJaxbTaskObject">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbComment">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbTaskObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="text" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="added-by" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="added-at" type="xs:dateTime"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbAttachment">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbTaskObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="name" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="contentType" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="attachedAt" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="attached-by" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="size" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="attachment-content-id" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbDeadlines">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="claimNextAvailableTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="claimTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="completeTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="tns:jaxbStringObjectPairArray"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="delegateTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="exitTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="failTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="forwardTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getAttachmentCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="attachment-id" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getContentCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="contentId" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskContentCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskAssignedAsBusinessAdminCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskAssignedAsPotentialOwnerCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="status" type="tns:status"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskByWorkItemIdCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="workItemId" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTasksByProcessInstanceIdCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTasksByStatusByProcessInstanceIdCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="taskName" type="xs:string"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="status" type="tns:status"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTasksByVariousFieldsCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="workItemIds" type="xs:long"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="taskIds" type="xs:long"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="process-instance-ids" type="xs:long"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="business-admin" type="xs:string"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="potential-owner" type="xs:string"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="task-owner" type="xs:string"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="status" type="tns:status"></xs:element>
+          <xs:element minOccurs="0" name="union" type="xs:boolean"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="language" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="maxResults" type="xs:int"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTasksOwnedCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="status" type="tns:status"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="nominateTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="potential-owner" type="tns:jaxbOrganizationalEntity"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="releaseTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="resumeTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="skipTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="startTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stopTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="suspendTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="compositeCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mainCommand" type="tns:taskCommand"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="commands" type="tns:taskCommand"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="processSubTaskCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="tns:jaxbStringObjectPairArray"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="executeTaskRulesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="tns:jaxbStringObjectPairArray"></xs:element>
+          <xs:element minOccurs="0" name="scope" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cancelDeadlineCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:taskCommand">
+        <xs:sequence>
+          <xs:element name="removeStart" type="xs:boolean"></xs:element>
+          <xs:element name="removeEnd" type="xs:boolean"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="clearHistoryLogsCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="auditCommand">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findActiveProcessInstancesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="processId" type="xs:string" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findNodeInstancesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="process-instance-id" type="xs:long" use="required"></xs:attribute>
+        <xs:attribute name="nodeId" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findProcessInstanceCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="process-instance-id" type="xs:long" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findProcessInstancesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="processId" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findSubProcessInstancesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="process-instance-id" type="xs:long" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findVariableInstancesCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="process-instance-id" type="xs:long" use="required"></xs:attribute>
+        <xs:attribute name="variableId" type="xs:string" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="findVariableInstancesByNameCommand">
+    <xs:complexContent>
+      <xs:extension base="tns:auditCommand">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="variableId" type="xs:string" use="required"></xs:attribute>
+        <xs:attribute name="value" type="xs:string"></xs:attribute>
+        <xs:attribute name="activeProcesses" type="xs:boolean" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:jaxbCommandsResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbCommandsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="deployment-id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="ver" type="xs:string"></xs:element>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="tns:exception"></xs:element>
+        <xs:element ref="tns:long-list"></xs:element>
+        <xs:element ref="tns:string-list"></xs:element>
+        <xs:element ref="tns:primitive"></xs:element>
+        <xs:element ref="tns:process-instance"></xs:element>
+        <xs:element ref="tns:process-instance-list"></xs:element>
+        <xs:element ref="tns:task-response"></xs:element>
+        <xs:element ref="tns:content-response"></xs:element>
+        <xs:element ref="tns:task-content-response"></xs:element>
+        <xs:element ref="tns:task-summary-list"></xs:element>
+        <xs:element ref="tns:work-item"></xs:element>
+        <xs:element ref="tns:variables"></xs:element>
+        <xs:element ref="tns:other"></xs:element>
+        <xs:element name="history-log-list" type="tns:jaxbHistoryLogList"></xs:element>
+        <xs:element name="proc-inst-log" type="tns:jaxbProcessInstanceLog"></xs:element>
+        <xs:element name="node-inst-log" type="tns:jaxbNodeInstanceLog"></xs:element>
+        <xs:element name="var-inst-log" type="tns:jaxbVariableInstanceLog"></xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbExceptionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="stackTrace" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractJaxbCommandResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="abstractJaxbResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="status" type="tns:jaxbRequestStatus"></xs:element>
+      <xs:element minOccurs="0" name="url" type="xs:anyURI"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbLongListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="long" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbStringListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="string" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbPrimitiveResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="xs:base64Binary"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProcessInstanceResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+          <xs:element name="id" type="xs:long"></xs:element>
+          <xs:element name="state" type="xs:int"></xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="event-types" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProcessInstanceListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:process-instance"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTaskResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:jaxbTask">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbContentResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:jaxbContent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbContent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="class-name" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="serializedContent" type="xs:base64Binary"></xs:element>
+      <xs:element minOccurs="0" name="content-map" type="tns:jaxbStringObjectMap"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbStringObjectMap">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" type="tns:jaxbStringObjectMapEntry"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbStringObjectMapEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute name="key" type="xs:string"></xs:attribute>
+        <xs:attribute name="class-name" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTaskContentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="content-map" type="tns:jaxbStringObjectMap"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTaskSummaryListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:task-summary"></xs:element>
+          <xs:element minOccurs="0" name="page-number" type="xs:int"></xs:element>
+          <xs:element minOccurs="0" name="page-size" type="xs:int"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbTaskSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="name" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="subject" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="description" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="status" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="priority" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="skipable" type="xs:boolean"></xs:element>
+      <xs:element minOccurs="0" name="actual-owner" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="created-by" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="created-on" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="activation-time" type="xs:dateTime"></xs:element>
+      <xs:element minOccurs="0" name="expiration-time" type="xs:dateTime"></xs:element>
+      <xs:element name="process-instance-id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="process-session-id" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="deployment-id" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="quick-task-summary" type="xs:boolean"></xs:element>
+      <xs:element minOccurs="0" name="sub-task-strategy" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="parent-id" type="xs:long"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="potential-owner" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbWorkItem">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="name" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="state" type="xs:int"></xs:element>
+          <xs:element minOccurs="0" name="param-map" type="tns:jaxbStringObjectMap"></xs:element>
+          <xs:element minOccurs="0" name="results-map" type="tns:jaxbStringObjectMap"></xs:element>
+          <xs:element minOccurs="0" name="processInstanceId" type="xs:long"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbVariablesResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="variables" type="tns:jaxbStringObjectMap"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbOtherResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbCommandResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:fact-handle"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="defaultFactHandle">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractBaseLinkedListNode">
+        <xs:sequence></xs:sequence>
+        <xs:attribute name="external-form" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractBaseLinkedListNode">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbHistoryLogList">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="tns:process-instance-log"></xs:element>
+        <xs:element ref="tns:node-instance-log"></xs:element>
+        <xs:element ref="tns:variable-instance-log"></xs:element>
+      </xs:choice>
+      <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="page-number" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="page-size" type="xs:int"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbProcessInstanceLog">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbHistoryObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="start" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="end" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="status" nillable="true" type="xs:int"></xs:element>
+          <xs:element minOccurs="0" name="parent-process-instance-id" nillable="true" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="outcome" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="duration" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="identity" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="process-version" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="process-name" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="external-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long"></xs:attribute>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractJaxbHistoryObject">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbNodeInstanceLog">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbHistoryObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="type" type="xs:int"></xs:element>
+          <xs:element minOccurs="0" name="node-instance-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="node-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="node-name" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="node-type" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="work-item-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="connection" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="external-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long"></xs:attribute>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="jaxbVariableInstanceLog">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractJaxbHistoryObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="process-instance-id" type="xs:long"></xs:element>
+          <xs:element minOccurs="0" name="process-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"></xs:element>
+          <xs:element minOccurs="0" name="variable-instance-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="variable-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="oldValue" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="external-id" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="command-name" type="xs:string"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long"></xs:attribute>
+        <xs:attribute name="index" type="xs:int"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WebServiceFaultInfo">
+    <xs:complexContent>
+      <xs:extension base="tns:serializableServiceObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="tns:exceptionType"></xs:element>
+          <xs:element minOccurs="0" name="correlationId" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="serializableServiceObject">
+    <xs:sequence></xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USER"></xs:enumeration>
+      <xs:enumeration value="GROUP"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Created"></xs:enumeration>
+      <xs:enumeration value="Ready"></xs:enumeration>
+      <xs:enumeration value="Reserved"></xs:enumeration>
+      <xs:enumeration value="InProgress"></xs:enumeration>
+      <xs:enumeration value="Suspended"></xs:enumeration>
+      <xs:enumeration value="Completed"></xs:enumeration>
+      <xs:enumeration value="Failed"></xs:enumeration>
+      <xs:enumeration value="Error"></xs:enumeration>
+      <xs:enumeration value="Exited"></xs:enumeration>
+      <xs:enumeration value="Obsolete"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="jaxbRequestStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"></xs:enumeration>
+      <xs:enumeration value="FAILURE"></xs:enumeration>
+      <xs:enumeration value="BAD_REQUEST"></xs:enumeration>
+      <xs:enumeration value="FORBIDDEN"></xs:enumeration>
+      <xs:enumeration value="PERMISSIONS_CONFLICT"></xs:enumeration>
+      <xs:enumeration value="NOT_FOUND"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="subTasksStrategy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoAction"></xs:enumeration>
+      <xs:enumeration value="EndParentOnAllSubTasksEnd"></xs:enumeration>
+      <xs:enumeration value="SkipAllSubTasksOnParentSkip"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="exceptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SYSTEM"></xs:enumeration>
+      <xs:enumeration value="CONFIGURATION"></xs:enumeration>
+      <xs:enumeration value="VALIDATION"></xs:enumeration>
+      <xs:enumeration value="PERMISSION"></xs:enumeration>
+      <xs:enumeration value="CONFLICT"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType final="#all" name="jaxbStringObjectPairArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:jaxbStringObjectPair"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CommandWebServiceException">
+    <wsdl:part element="tns:CommandServiceException" name="CommandWebServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="execute">
+    <wsdl:part element="tns:execute" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeResponse">
+    <wsdl:part element="tns:executeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CommandService">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:execute" name="execute">
+    </wsdl:input>
+      <wsdl:output message="tns:executeResponse" name="executeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CommandWebServiceException" name="CommandWebServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommandServiceSoapBinding" type="tns:CommandService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="execute">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="execute">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="executeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="CommandWebServiceException">
+        <soap:fault name="CommandWebServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommandService">
+    <wsdl:port binding="tns:CommandServiceSoapBinding" name="CommandServicePort">
+      <soap:address location="http://localhost:8080/jbpm-console/CommandService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

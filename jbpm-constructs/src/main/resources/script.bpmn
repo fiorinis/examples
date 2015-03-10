@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_5eggAHl_EeSGx8cYd-4BwA" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_nameItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_5" structureRef="com.packt.masterjbpm6.pizza.model.Order"/>
+  <bpmn2:process id="script" drools:version="1.0" drools:packageName="defaultPackage" drools:adHoc="false" name="script" isExecutable="true">
+    <bpmn2:extensionElements>
+      <drools:import name="com.packt.masterjbpm6.pizza.model.Order"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="name" itemSubjectRef="_nameItem"/>
+    <bpmn2:scriptTask id="ScriptTask_1" name="check order" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>bpmn20:_79F95FA7-A2E3-4CD5-A324-0635BFC797A4</bpmn2:incoming>
+      <bpmn2:outgoing>bpmn20:SequenceFlow_4</bpmn2:outgoing>
+      <bpmn2:script>Order order=(Order)kcontext.getVariable (&quot;order&quot;);&#xD;
+order.setNote (&quot;order modified&quot;);&#xD;
+&#xD;
+</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:endEvent id="EndEvent_3" name="">
+      <bpmn2:incoming>bpmn20:SequenceFlow_4</bpmn2:incoming>
+      <bpmn2:terminateEventDefinition id="TerminateEventDefinition_2"/>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" drools:priority="1" sourceRef="ScriptTask_1" targetRef="EndEvent_3"/>
+    <bpmn2:startEvent id="_9A922FC9-A099-4398-BF41-FB04BD99D625" drools:bgcolor="#9acd32" drools:selectable="true" name="">
+      <bpmn2:outgoing>bpmn20:_79F95FA7-A2E3-4CD5-A324-0635BFC797A4</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="_79F95FA7-A2E3-4CD5-A324-0635BFC797A4" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="_9A922FC9-A099-4398-BF41-FB04BD99D625" targetRef="ScriptTask_1"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_5eggAXl_EeSGx8cYd-4BwA" name="script">
+    <bpmndi:BPMNPlane id="_5eggAnl_EeSGx8cYd-4BwA" bpmnElement="script">
+      <bpmndi:BPMNShape id="_5eggA3l_EeSGx8cYd-4BwA" bpmnElement="_9A922FC9-A099-4398-BF41-FB04BD99D625">
+        <dc:Bounds height="30.0" width="30.0" x="130.0" y="166.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_1">
+        <dc:Bounds height="80.0" width="100.0" x="195.0" y="140.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_3" bpmnElement="EndEvent_3">
+        <dc:Bounds height="36.0" width="36.0" x="363.0" y="162.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_5eggBXl_EeSGx8cYd-4BwA" bpmnElement="_79F95FA7-A2E3-4CD5-A324-0635BFC797A4" sourceElement="_5eggA3l_EeSGx8cYd-4BwA" targetElement="BPMNShape_ScriptTask_1">
+        <di:waypoint xsi:type="dc:Point" x="160.0" y="181.0"/>
+        <di:waypoint xsi:type="dc:Point" x="175.0" y="181.0"/>
+        <di:waypoint xsi:type="dc:Point" x="175.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="195.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_ScriptTask_1" targetElement="BPMNShape_EndEvent_3">
+        <di:waypoint xsi:type="dc:Point" x="295.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="325.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="325.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="363.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

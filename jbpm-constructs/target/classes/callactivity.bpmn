@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_yHgWIEcEEeGlwN3uhdkD7g" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_xItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_yItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_6" structureRef="com.packt.masterjbpm6.pizza.model.Order"/>
+  <bpmn2:process id="callactivityprocess" drools:version="1" drools:packageName="defaultPackage" drools:adHoc="false" name="callactivityprocess" isExecutable="true">
+    <bpmn2:extensionElements>
+      <drools:import name="java.util.List"/>
+      <drools:import name="java.util.ArrayList"/>
+      <drools:import name="com.packt.masterjbpm6.pizza.model.Order"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="order" itemSubjectRef="_ItemDefinition_6"/>
+    <bpmn2:callActivity id="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D" drools:waitForCompletion="true" drools:independent="true" name="call process" calledElement="callactivitySubprocess">
+      <bpmn2:incoming>bpmn20:_8898B7EF-3CCF-4D18-A563-DEE4EB5580EF</bpmn2:incoming>
+      <bpmn2:outgoing>bpmn20:SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_yHg9MEcEEeGlwN3uhdkD7g">
+        <bpmn2:dataInput id="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subXInput" itemSubjectRef="_ItemDefinition_6" name="orderSub"/>
+        <bpmn2:dataOutput id="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subYOutput" itemSubjectRef="_ItemDefinition_6" name="orderSub"/>
+        <bpmn2:inputSet id="_yHg9MUcEEeGlwN3uhdkD7g">
+          <bpmn2:dataInputRefs>_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subXInput</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_yHg9MkcEEeGlwN3uhdkD7g">
+          <bpmn2:dataOutputRefs>_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subYOutput</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_yHg9M0cEEeGlwN3uhdkD7g">
+        <bpmn2:sourceRef>order</bpmn2:sourceRef>
+        <bpmn2:targetRef>_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subXInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_yHg9NEcEEeGlwN3uhdkD7g">
+        <bpmn2:sourceRef>_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D_subYOutput</bpmn2:sourceRef>
+        <bpmn2:targetRef>order</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:callActivity>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" drools:priority="1" name="" sourceRef="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D" targetRef="ScriptTask_1"/>
+    <bpmn2:scriptTask id="ScriptTask_1" name="Script Task 1" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>bpmn20:SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>bpmn20:SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:script>System.out.println (&quot;delivery name after subprocess:&quot;+order.getDelivery().getDeliveryName());</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" drools:priority="1" name="" sourceRef="ScriptTask_1" targetRef="_5D01621C-FF8A-4489-ACBD-AB5DF67FC8DE"/>
+    <bpmn2:endEvent id="_5D01621C-FF8A-4489-ACBD-AB5DF67FC8DE" name="EndProcess">
+      <bpmn2:incoming>bpmn20:SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:terminateEventDefinition id="_yHg9NUcEEeGlwN3uhdkD7g"/>
+    </bpmn2:endEvent>
+    <bpmn2:startEvent id="_B8CDFEF4-A41B-4772-981C-A014D460D93D" name="StartProcess">
+      <bpmn2:outgoing>bpmn20:_8898B7EF-3CCF-4D18-A563-DEE4EB5580EF</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="_8898B7EF-3CCF-4D18-A563-DEE4EB5580EF" drools:priority="1" name="" sourceRef="_B8CDFEF4-A41B-4772-981C-A014D460D93D" targetRef="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_yHg9NkcEEeGlwN3uhdkD7g" name="callactivityprocess">
+    <bpmndi:BPMNPlane id="_yHg9N0cEEeGlwN3uhdkD7g" bpmnElement="callactivityprocess">
+      <bpmndi:BPMNShape id="_yHg9OEcEEeGlwN3uhdkD7g" bpmnElement="_B8CDFEF4-A41B-4772-981C-A014D460D93D">
+        <dc:Bounds height="30.0" width="30.0" x="170.0" y="50.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_yHg9OkcEEeGlwN3uhdkD7g" bpmnElement="_5D01621C-FF8A-4489-ACBD-AB5DF67FC8DE">
+        <dc:Bounds height="28.0" width="28.0" x="173.0" y="280.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_yHg9OUcEEeGlwN3uhdkD7g" bpmnElement="_B64B0F70-B47C-4CE9-AC9C-80315FD8A36D">
+        <dc:Bounds height="60.0" width="110.0" x="130.0" y="115.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_1">
+        <dc:Bounds height="50.0" width="110.0" x="131.0" y="200.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_yHg9O0cEEeGlwN3uhdkD7g" bpmnElement="_8898B7EF-3CCF-4D18-A563-DEE4EB5580EF" sourceElement="_yHg9OEcEEeGlwN3uhdkD7g" targetElement="_yHg9OUcEEeGlwN3uhdkD7g">
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="80.0"/>
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="95.0"/>
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="95.0"/>
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="115.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_yHg9OUcEEeGlwN3uhdkD7g" targetElement="BPMNShape_ScriptTask_1">
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="175.0"/>
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="186.0"/>
+        <di:waypoint xsi:type="dc:Point" x="186.0" y="186.0"/>
+        <di:waypoint xsi:type="dc:Point" x="186.0" y="200.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ScriptTask_1" targetElement="_yHg9OkcEEeGlwN3uhdkD7g">
+        <di:waypoint xsi:type="dc:Point" x="186.0" y="250.0"/>
+        <di:waypoint xsi:type="dc:Point" x="186.0" y="263.0"/>
+        <di:waypoint xsi:type="dc:Point" x="187.0" y="263.0"/>
+        <di:waypoint xsi:type="dc:Point" x="187.0" y="280.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
