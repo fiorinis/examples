@@ -50,17 +50,4 @@ public class ServiceTaskTest extends PacktJUnitBaseTestCase {
 
 	}
 
-	@Test
-	public void testAbortProcess() {
-
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("order", new Order());
-		ProcessInstance processInstance = ksession.startProcess(
-				"callactivityabort", params);
-
-		waitUserInput("type something to abort process instance ");
-		ksession.abortProcessInstance(processInstance.getId());
-		waitUserInput("type something to end");
-	}
-
 }

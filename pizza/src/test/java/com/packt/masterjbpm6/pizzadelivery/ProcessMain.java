@@ -8,6 +8,8 @@ import javax.persistence.Persistence;
 
 import org.jbpm.runtime.manager.impl.task.SynchronizedTaskService;
 import org.jbpm.test.JBPMHelper;
+import org.junit.Assert;
+import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -22,7 +24,7 @@ import org.kie.api.task.model.TaskSummary;
 import bitronix.tm.resource.jdbc.PoolingDataSource;
 import bitronix.tm.resource.jdbc.lrc.LrcXADataSource;
 
-public class ProcessMain {
+public class ProcessMain extends Assert {
 
 	public static final String PU_NAME = "localjbpm-persistenceunit";
 	public static final String DATASOURCE_NAME = "jdbc/localjbpm-ds";
@@ -60,7 +62,8 @@ public class ProcessMain {
 		manager.disposeRuntimeEngine(engine);
 	}
 
-	public static void main(String[] args) {
+	@Test
+	public static void testProcess() {
 		getProperties();
 		initWf();
 		long processid = startProcess();

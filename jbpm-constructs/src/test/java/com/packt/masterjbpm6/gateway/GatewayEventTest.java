@@ -41,7 +41,7 @@ public class GatewayEventTest extends PacktJUnitBaseTestCase {
 			e.printStackTrace();
 		}
 
-		super.sendSignal(pi.getId(), "customerCancelOrder", orderid);
+//		super.sendSignal(pi.getId(), "customerCancelOrder", orderid);
 
 	}
 

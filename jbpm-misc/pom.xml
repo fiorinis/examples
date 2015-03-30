@@ -12,13 +12,19 @@
 
 
 	<properties>
-		<jbpm.version>6.1.0.Final</jbpm.version>
+		<jbpm.version>6.2.0.Final</jbpm.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.packt.masterjbpm6</groupId>
 			<artifactId>test-common</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.packt.masterjbpm6</groupId>
+			<artifactId>pizzamodel</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
@@ -42,6 +48,35 @@
 			<artifactId>jbpm-document</artifactId>
 			<version>${jbpm.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-ci</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.aether</groupId>
+			<artifactId>aether-api</artifactId>
+			<version>1.0.0.v20140518</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.2</version>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

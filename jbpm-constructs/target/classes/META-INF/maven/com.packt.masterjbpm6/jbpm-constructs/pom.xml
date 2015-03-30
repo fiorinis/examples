@@ -12,33 +12,10 @@
 	<description>jBPM sample constructs Project (Chapter 5)</description>
 
 	<properties>
-		<jbpm.version>6.1.0.Final</jbpm.version>
+		<jbpm.version>6.2.0.Final</jbpm.version>
 		<cxf.version>2.7.14</cxf.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Repository Group</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>central</id>
-			<url>http://repo1.maven.org/maven2</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-
-	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -98,13 +75,6 @@
 			<groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-databind</artifactId> 
 			<scope>test</scope> <version>RELEASE</version> </dependency> -->
 
-		<!-- remote API dependencies -->
-		<dependency>
-			<groupId>org.kie.remote</groupId>
-			<artifactId>kie-services-client</artifactId>
-			<version>${jbpm.version}</version>
-		</dependency>
-
 
 		<!-- misc dependencies -->
 		<dependency>
@@ -113,4 +83,17 @@
 			<version>1.1.2</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

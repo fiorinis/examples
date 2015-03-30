@@ -11,6 +11,11 @@ import org.kie.api.task.model.TaskSummary;
 
 import com.packt.masterjbpm6.test.PacktJUnitBaseTestCase;
 
+/**
+ * 
+ * @author simo
+ * 
+ */
 public class FluentTest extends PacktJUnitBaseTestCase {
 
 	// must be in the classpath
@@ -34,7 +39,7 @@ public class FluentTest extends PacktJUnitBaseTestCase {
 		ftask.setWorkItemId("default-singleton");
 		ftask.setProcessId(PROCESS_ID);
 		ftask.setProcessInstanceId(processinstance.getId());
-		ftask.setProcessSessionId(ksession.getId());
+		ftask.setProcessSessionId((int) ksession.getIdentifier());
 		long taskid = taskService.addTask(ftask.getTask(),
 				new HashMap<String, Object>());
 

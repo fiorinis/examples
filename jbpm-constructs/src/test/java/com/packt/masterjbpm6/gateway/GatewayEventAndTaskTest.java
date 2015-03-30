@@ -11,7 +11,7 @@ public class GatewayEventAndTaskTest extends PacktJUnitBaseTestCase {
 	public static final String processId = "gateway_event_and_task";
 
 	public GatewayEventAndTaskTest() {
-		super(PU_NAME);
+		super();
 		setProcessResources(processResource);
 	}
 
@@ -21,10 +21,10 @@ public class GatewayEventAndTaskTest extends PacktJUnitBaseTestCase {
 		org.kie.api.runtime.process.ProcessInstance pi = ksession
 				.startProcess(processId);
 		// check task exists
-		assertTrue(super.getFirstTaskOnList("luigi") != null);
+		assertNotNull(super.getFirstTaskOnList("chen"));
 		// wait
 		waitUserInput("check the console for the 'end process' message then proceed");
-		assertFalse(super.getFirstTaskOnList("luigi") != null);
+		assertNull(super.getFirstTaskOnList("chen"));
 
 	}
 }

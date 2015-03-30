@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.drools.compiler.kie.builder.impl.InternalKieModule;
+import org.eclipse.aether.artifact.Artifact;
 import org.jbpm.process.instance.impl.demo.SystemOutWorkItemHandler;
 import org.junit.Test;
 import org.kie.api.KieServices;
@@ -27,10 +28,14 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.scanner.MavenRepository;
-import org.sonatype.aether.artifact.Artifact;
 
 import com.packt.masterjbpm6.test.PacktJUnitBaseTestCase;
 
+/**
+ * 
+ * @author simo
+ * 
+ */
 public class KieScannerTest extends PacktJUnitBaseTestCase {
 
 	// must be in the classpath

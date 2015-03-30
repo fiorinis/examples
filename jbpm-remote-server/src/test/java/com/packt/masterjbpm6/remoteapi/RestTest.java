@@ -5,16 +5,18 @@ import java.net.URL;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.task.TaskService;
 import org.kie.api.task.model.TaskSummary;
-import org.kie.services.client.api.RemoteRestRuntimeEngineFactory;
+import org.kie.remote.client.api.RemoteRestRuntimeEngineBuilder;
+import org.kie.remote.client.api.RemoteRestRuntimeEngineFactory;
+import org.kie.remote.client.api.exception.RemoteApiException;
 import org.kie.services.client.api.RemoteRuntimeEngineFactory;
 import org.kie.services.client.api.command.RemoteRuntimeEngine;
-import org.kie.services.client.api.command.exception.RemoteApiException;
 
 public class RestTest extends Assert {
 
@@ -23,6 +25,8 @@ public class RestTest extends Assert {
 	public static String user = "nino";
 	public static String password = "nino";
 	public static String processID = "com.packt.masteringjbpm6.pizzadelivery";
+
+	private RemoteRuntimeEngine engine;
 
 	@BeforeClass
 	public static void setup() {
@@ -35,13 +39,23 @@ public class RestTest extends Assert {
 		}
 	}
 
+	@Before
+	public void initRemoteRuntimeEngineF() {
+
+		RemoteRestRuntimeEngineBuilder restEngineBuilder = RemoteRuntimeEngineFactory
+				.newRestBuilder().addDeploymentId(deploymentId)
+				.addUrl(instaceurl).addUserName(user).addPassword(password);
+
+		RemoteRestRuntimeEngineFactory engineFactory = restEngineBuilder
+				.buildFactory();
+		assertNotNull(engineFactory);
+		engine = engineFactory.newRuntimeEngine();
+		assertNotNull(engine);
+	}
+
 	@Test
 	public void startProcess() {
 
-		RemoteRuntimeEngineFactory restSessionFactory = RemoteRestRuntimeEngineFactory
-				.newBuilder().addDeploymentId(deploymentId).addUrl(instaceurl)
-				.addUserName(user).addPassword(password).build();
-		RemoteRuntimeEngine engine = restSessionFactory.newRuntimeEngine();
 		KieSession ksession = engine.getKieSession();
 		TaskService taskService = engine.getTaskService();
 

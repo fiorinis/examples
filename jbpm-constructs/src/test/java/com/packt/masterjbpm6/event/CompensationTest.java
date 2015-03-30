@@ -17,7 +17,7 @@ public class CompensationTest extends PacktJUnitBaseTestCase {
 			"compensateorder.bpmn", "compensateendsubprocess.bpmn" };
 
 	public CompensationTest() {
-		super();
+		super(PU_NAME);
 		setProcessResources(processResources);
 	}
 
@@ -73,7 +73,7 @@ public class CompensationTest extends PacktJUnitBaseTestCase {
 		org.kie.api.runtime.process.ProcessInstance pi = ksession.startProcess(
 				"compensationsubprocessend", params);
 		assertProcessVarValue(pi, "sum", "0");
-		
+
 	}
 
 	@Test

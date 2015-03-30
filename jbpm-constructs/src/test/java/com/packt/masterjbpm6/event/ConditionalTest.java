@@ -13,7 +13,7 @@ public class ConditionalTest extends PacktJUnitBaseTestCase {
 	public static final String[] processResources = new String[] { "conditional.bpmn" };
 
 	public ConditionalTest() {
-		super();
+		super(PU_NAME);
 		setProcessResources(processResources);
 	}
 

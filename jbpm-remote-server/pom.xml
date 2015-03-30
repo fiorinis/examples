@@ -14,7 +14,7 @@
 
 
 	<properties>
-		<jbpm.version>6.1.0.Final</jbpm.version>
+		<jbpm.version>6.2.0.Final</jbpm.version>
 		<cxf.version>2.7.14</cxf.version>
 	</properties>
 
@@ -137,7 +137,13 @@
 		<!-- remote API dependencies -->
 		<dependency>
 			<groupId>org.kie.remote</groupId>
-			<artifactId>kie-services-client</artifactId>
+			<artifactId>kie-remote-common</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+			
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-remote-client</artifactId>
 			<version>${jbpm.version}</version>
 			<exclusions>
 				<exclusion>
@@ -174,7 +180,7 @@
 			</exclusions>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.kie.remote.ws</groupId>
 			<artifactId>kie-remote-ws-wsdl-cmd</artifactId>
 			<version>${jbpm.version}</version>
@@ -185,7 +191,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+ -->
 		<dependency>
 			<groupId>org.kie.remote.ws</groupId>
 			<artifactId>kie-remote-ws-common</artifactId>
@@ -240,8 +246,18 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-
-
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

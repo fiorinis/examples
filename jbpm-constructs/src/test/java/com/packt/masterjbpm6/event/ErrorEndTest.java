@@ -23,10 +23,10 @@ public class ErrorEndTest extends PacktJUnitBaseTestCase {
 		int luigitasks = super.getNumTasksOnList("luigi");
 		super.assertTrue(luigitasks == 1);
 		super.assertTrue(super.performFirstTaskOnList("luigi"));
-		waitUserInput("wait for a few seconds before checking for subprocess to complete");
-//		int mariotasks = super.getNumTasksOnList("mario");
-//		super.assertTrue(mariotasks == 1);
-//		super.assertTrue(super.performFirstTaskOnList("mario"));
-		super.assertProcessInstanceCompleted(processInstance.getId(), ksession);
+		waitUserInput("wait for a few seconds before checking for subprocess completion");
+		// int mariotasks = super.getNumTasksOnList("mario");
+		// super.assertTrue(mariotasks == 1);
+		// super.assertTrue(super.performFirstTaskOnList("mario"));
+		super.assertProcessInstanceCompleted(processInstance.getId());
 	}
 }

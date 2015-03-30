@@ -42,12 +42,12 @@ public class TaskTest extends PacktJUnitBaseTestCase {
 		super.assertTrue(count == 1);
 		TaskSummary task = getFirstTaskOnList("luigi");
 
-		super.waitUserInput(" press to delegate to Mario");
+		super.waitUserInput(" type something to delegate to Mario");
 
 		taskService.delegate(task.getId(), "luigi", "mario");
 		int countmario = super.getNumTasksOnList("mario");
 		int newcountluigi = super.getNumTasksOnList("luigi");
-		super.assertTrue(newcountluigi == 1);
+		super.assertTrue(newcountluigi == 0);
 		super.assertTrue(countmario == 1);
 		taskService.skip(task.getId(), "mario");
 		int newcountmario = super.getNumTasksOnList("mario");
@@ -96,7 +96,7 @@ public class TaskTest extends PacktJUnitBaseTestCase {
 		int count = super.getNumTasksOnList("luigi");
 		super.assertTrue(count == 1);
 
-		super.waitUserInput("wait at least 10 seconds before proceeding... ");
+		super.waitUserInput("wait at least 10 seconds before checking for task reassignment... ");
 		int countmario = super.getNumTasksOnList("mario");
 		int newcountluigi = super.getNumTasksOnList("luigi");
 		super.assertTrue(newcountluigi == 0);

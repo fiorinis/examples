@@ -125,7 +125,7 @@ public class PacktJUnitBaseTestCase extends JbpmJUnitBaseTestCase {
 			pds.getDriverProperties()
 					.put("url",
 							props.getProperty("persistence.datasource.url",
-									"jdbc:h2:tcp://localhost/~/jbpm-constructs;MVCC=TRUE"));
+									"jdbc:h2:tcp://localhost/~/jbpm-62;MVCC=TRUE"));
 			pds.getDriverProperties().put(
 					"driverClassName",
 					props.getProperty("persistence.datasource.driverClassName",

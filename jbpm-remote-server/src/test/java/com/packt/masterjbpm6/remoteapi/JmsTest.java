@@ -14,17 +14,16 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.manager.RuntimeEngine;
 import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.services.client.api.RemoteJmsRuntimeEngineFactory;
-import org.kie.services.client.api.builder.RemoteJmsRuntimeEngineFactoryBuilder;
+import org.kie.remote.client.api.RemoteJmsRuntimeEngineBuilder;
+import org.kie.remote.client.api.RemoteJmsRuntimeEngineFactory;
+import org.kie.services.client.api.RemoteRuntimeEngineFactory;
+import org.kie.services.client.api.command.RemoteRuntimeEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.packt.masterjbpm6.test.PacktJUnitBaseTestCase;
 
 public class JmsTest extends Assert {
 
@@ -39,17 +38,12 @@ public class JmsTest extends Assert {
 
 	private static final Logger logger = LoggerFactory.getLogger(JmsTest.class);
 
-	@BeforeClass
-	public static void setup() {
+	RemoteRuntimeEngine engine;
 
-	}
-
-	@Test
-	public void startProcess() {
-
+	@Before
+	public void initRemoteRuntimeEngineF() {
 		InitialContext remoteInitialContext = getRemoteInitialContext(
 				serverUrl, jms_user, jms_password);
-
 		int maxTimeoutSecs = 10;
 
 		String connectionFactoryString = System.getProperty(
@@ -72,27 +66,27 @@ public class JmsTest extends Assert {
 		} catch (NamingException e1) {
 			e1.printStackTrace();
 		}
-
-		RemoteJmsRuntimeEngineFactoryBuilder builder = null;
-		try {
-			builder = RemoteJmsRuntimeEngineFactory.newBuilder()
-					.addDeploymentId(deploymentId)
-					.addRemoteInitialContext(remoteInitialContext)
-					.addUserName(jms_user).addPassword(jms_password)
-					.addConnectionFactory(connectionfactory)
-					.addTimeout(maxTimeoutSecs);
-			// use custom response Queue instead of the default
-			// KIE.RESPONSE queue
-			if (responseQ != null) {
-				builder.addResponseQueue(responseQ);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		RemoteJmsRuntimeEngineBuilder jmsEngineBuilder = RemoteRuntimeEngineFactory
+				.newJmsBuilder().addDeploymentId(deploymentId)
+				.addRemoteInitialContext(remoteInitialContext)
+				.addUserName(jms_user).addPassword(jms_password)
+				.addConnectionFactory(connectionfactory)
+				.addTimeout(maxTimeoutSecs);
+		// use custom response Queue instead of the default
+		// KIE.RESPONSE queue
+		if (responseQ != null) {
+			jmsEngineBuilder.addResponseQueue(responseQ);
 		}
-		assertNotNull(builder);
 
-		RemoteJmsRuntimeEngineFactory remoteJmsFactory = builder.build();
-		RuntimeEngine engine = remoteJmsFactory.newRuntimeEngine();
+		RemoteJmsRuntimeEngineFactory engineFactory = jmsEngineBuilder
+				.buildFactory();
+		assertNotNull(engineFactory);
+		engine = engineFactory.newRuntimeEngine();
+		assertNotNull(engine);
+	}
+
+	@Test
+	public void startProcess() {
 
 		KieSession ksession = engine.getKieSession();
 		for (int t = 0; t < 5; t++) {

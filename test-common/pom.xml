@@ -11,7 +11,7 @@
 	<description>base test classes and configuration files (Chapter 4 onward)</description>
 
 	<properties>
-		<jbpm.version>6.1.0.Final</jbpm.version>
+		<jbpm.version>6.2.0.Final</jbpm.version>
 	</properties>
 
 	<dependencies>
@@ -36,5 +36,18 @@
 			<version>${jbpm.version}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

@@ -12,6 +12,8 @@ import javax.persistence.Persistence;
 
 import org.jbpm.services.task.exception.PermissionDeniedException;
 import org.jbpm.test.JBPMHelper;
+import org.junit.Assert;
+import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -26,7 +28,7 @@ import org.kie.api.task.model.TaskSummary;
 import bitronix.tm.resource.jdbc.PoolingDataSource;
 import bitronix.tm.resource.jdbc.lrc.LrcXADataSource;
 
-public class ProcessBAM {
+public class ProcessBAM extends Assert {
 
 	public static final String PU_NAME = "localjbpm-persistenceunit";
 	public static final String DATASOURCE_NAME = "jdbc/localjbpm-ds";
@@ -118,7 +120,8 @@ public class ProcessBAM {
 		return actorId.equals(humans.maria.toString());
 	}
 
-	public static void main(String args[]) {
+	@Test
+	public void testBAM() {
 		getProperties();
 		initWf();
 
