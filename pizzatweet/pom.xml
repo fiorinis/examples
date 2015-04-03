@@ -10,7 +10,9 @@
 
 	<name>pizzatweet</name>
 	<description>jBPM custom workitemhandlers process and test classes (Chapter 8 onward)</description>
-
+	<properties>
+		<jbpm.version>6.2.0.Final</jbpm.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.packt.masterjbpm6</groupId>
@@ -31,7 +33,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>3.2</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -41,7 +43,7 @@
 			<plugin>
 				<groupId>org.kie</groupId>
 				<artifactId>kie-maven-plugin</artifactId>
-				<version>6.2.0.Final</version>
+				<version>${jbpm.version}</version>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
