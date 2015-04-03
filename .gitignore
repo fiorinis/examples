@@ -1,0 +1,13 @@
+/jbpm-constructs/target
+/test-common/target
+/pizzatweet/target
+/pizzamodel/target
+/pizzahandlers/target
+/pizza/bin
+/pizza/target
+/jbpm-remote-server/target
+/jbpm-remote-client/target
+/jbpm-misc/target
+/jbpm-marshalling/btm2.tlog
+/jbpm-marshalling/target
+/jbpm-marshalling/btm1.tlog
