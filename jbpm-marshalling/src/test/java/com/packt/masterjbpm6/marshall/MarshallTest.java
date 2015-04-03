@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.persistence.EntityManagerFactory;
 
-import junit.framework.Assert;
-
 import org.drools.core.marshalling.impl.ClassObjectMarshallingStrategyAcceptor;
 import org.drools.core.marshalling.impl.SerializablePlaceholderResolverStrategy;
 import org.junit.Test;
@@ -23,6 +21,7 @@ public class MarshallTest extends PacktJUnitBaseTestCase {
 	// must be in the classpath
 	public static final String[] processResources = new String[] { "rule_marshall.bpmn", };
 	public static final String[] rules = new String[] { "rule.drl", };
+	public static String PROCESS_ID = "rule_marshall";
 
 	public MarshallTest() {
 		super(PU_NAME);
@@ -48,15 +47,16 @@ public class MarshallTest extends PacktJUnitBaseTestCase {
 
 		params.put("orderEntity", orderentity);
 
-		ProcessInstance processInstance = ksession.startProcess(
-				"rule_marshall", params);
+		ProcessInstance processInstance = ksession.startProcess(PROCESS_ID,
+				params);
 
-		waitUserInput("type something to perform user task ");
+		waitUserInput("type something to perform the user task ");
 		ksession.fireAllRules();
 		super.performFirstTaskOnList("luigi");
-		waitUserInput("type something to get global var");
+		waitUserInput("type something to get the global var");
 
 		Order ordermodified = (Order) ksession.getGlobal("orderglobal");
+		System.out.println("global order var:" + ordermodified);
 		assertEquals("URGENT", ordermodified.getNote());
 		waitUserInput();
 	}
