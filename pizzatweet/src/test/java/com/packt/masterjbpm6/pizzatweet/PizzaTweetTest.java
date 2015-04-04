@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jbpm.process.audit.ProcessInstanceLog;
 import org.junit.Assert;
 import org.junit.Test;
 import org.kie.api.KieBase;
@@ -41,6 +40,8 @@ public class PizzaTweetTest extends Assert {
 		}
 		ProcessInstance instance = session.startProcess("pizzatweet.tweet",
 				params);
-		Assert.assertTrue(true);
+		assertNotNull(instance);
+		// trigger the workitemhandler close method
+		session.dispose();
 	}
 }
