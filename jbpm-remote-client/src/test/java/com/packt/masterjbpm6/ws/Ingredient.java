@@ -6,6 +6,10 @@ public class Ingredient extends Material {
 
 	private IngredientType type;
 
+	public Ingredient() {
+
+	}
+
 	public static enum IngredientType {
 		TOMATO, MOZZARELLA, SALAME, PEPPERONI, ANCHOVIES, ONIONS, ARTICHOKES, HAM, MUSHROOMS, OLIVES
 

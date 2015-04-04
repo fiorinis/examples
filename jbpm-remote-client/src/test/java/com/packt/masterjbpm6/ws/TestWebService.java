@@ -3,11 +3,10 @@ package com.packt.masterjbpm6.ws;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.jws.soap.*;
+import javax.jws.soap.SOAPBinding;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.packt.masterjbpm6.pizza.model.Order;
 
 @WebService(serviceName = "TestWebService")
 @SOAPBinding(style = SOAPBinding.Style.RPC, use = SOAPBinding.Use.LITERAL, parameterStyle = SOAPBinding.ParameterStyle.BARE)
@@ -24,14 +23,16 @@ public class TestWebService {
 
 	@WebMethod(operationName = "addSmallOrder")
 	public boolean addSmallOrder(@WebParam(name = "order") Order order) {
-		logger.info(String.format("added order desc:%s", order.getNote()));
-		return order.getCost() < 10;
+		logger.info(String.format("addSmallOrder:added order %s",
+				order.toString()));
+		return order.getCost() < 100;
 	}
 
 	@WebMethod(operationName = "addLargeOrder")
 	public boolean addLargeOrder(@WebParam(name = "order") Order order) {
-		logger.info(String.format("added order desc:%s", order.getNote()));
-		return order.getCost() > 100;
+		logger.info(String.format("addLargeOrder: added order %s",
+				order.toString()));
+		return order.getCost() >= 100;
 	}
 
 }

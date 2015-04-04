@@ -15,6 +15,7 @@ public class RestResource {
 	public final static String CONTEXT = "/pizzarestservice";
 
 	@GET
+	@Path("default")
 	@Produces("text/plain")
 	public String get(@QueryParam("param") String param) {
 
@@ -22,12 +23,21 @@ public class RestResource {
 	}
 
 	@POST
-	@Path("/order")
+	@Path("xml")
 	@Consumes("application/xml")
 	@Produces("application/xml")
-	public Order postOrder(Order order) {
+	public Order postXML(Order order) {
 		order.setNote("POST Order note was:" + order.getNote());
 		return order;
 	}
 
+	@POST
+	@Path("order")
+	@Consumes("application/xml")
+	@Produces("application/xml")
+	public Order postOrderXML(Order order) {
+		System.out.println("received order from REST: " + order);
+		order.setNote("POST Order note was:" + order.getNote());
+		return order;
+	}
 }

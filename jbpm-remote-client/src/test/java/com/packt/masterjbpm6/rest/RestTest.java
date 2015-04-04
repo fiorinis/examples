@@ -8,8 +8,6 @@ import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.drools.core.process.instance.impl.WorkItemImpl;
 import org.jbpm.process.workitem.rest.RESTWorkItemHandler;
 import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.kie.api.runtime.process.WorkItem;
@@ -24,7 +22,7 @@ public class RestTest extends PacktJUnitBaseTestCase {
 	private final static String serverURL = SERVER_ROOT + RestResource.CONTEXT;
 	private static Server server;
 
-	public static final String processResource = "rest.bpmn";
+	public static final String processResource = "rest.bpmn2";
 	public static final String processId = "rest";
 
 	public RestTest() {

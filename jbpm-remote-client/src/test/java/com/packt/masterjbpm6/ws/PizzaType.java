@@ -20,6 +20,10 @@ public class PizzaType implements Serializable {
 	private Types type;
 	private double baseprice;
 
+	public PizzaType() {
+
+	}
+	
 	static {
 
 		addPizzaType(Types.FOURSEASONS, new IngredientType[] {

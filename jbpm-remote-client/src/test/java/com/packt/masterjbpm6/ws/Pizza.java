@@ -31,6 +31,10 @@ public class Pizza implements Serializable {
 		this.desc = desc;
 	}
 
+	public Pizza() {
+
+	}
+
 	public Pizza(PizzaType type, String desc) {
 		setType(type);
 		setDesc(desc);
