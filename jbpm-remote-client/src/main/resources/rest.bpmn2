@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_FRrh0ZZ5EeSzoOfIrsV7og" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_orderItem" structureRef="com.packt.masterjbpm6.pizza.model.Order"/>
+  <bpmn2:itemDefinition id="_msgItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_tagsItem" structureRef="java.util.List"/>
+  <bpmn2:itemDefinition id="_successItem" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_resultsItem" structureRef="java.util.Map"/>
+  <bpmn2:itemDefinition id="_documentItem" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UsernameInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ReadTimeoutInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ResultOutputXItem" structureRef="java.lang.Object"/>
+  <bpmn2:process id="rest" drools:version="1.0" drools:packageName="org.jbpm" drools:adHoc="false" name="rest" isExecutable="true">
+    <bpmn2:extensionElements>
+      <drools:import name="com.packt.masterjbpm6.pizza.model.Order"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="order" itemSubjectRef="_orderItem"/>
+    <bpmn2:property id="restresults" itemSubjectRef="_resultsItem"/>
+    <bpmn2:startEvent id="processStartEvent" drools:bgcolor="#9acd32" drools:selectable="true" name="">
+      <bpmn2:outgoing>bpmn20:_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="_0BB55B88-23CA-4078-BA0E-4BD6A3540EE0" drools:bgcolor="#ff6347" drools:selectable="true" name="">
+      <bpmn2:incoming>bpmn20:_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:task id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F" drools:selectable="true" drools:taskName="Rest" name="REST">
+      <bpmn2:incoming>bpmn20:_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6</bpmn2:incoming>
+      <bpmn2:outgoing>bpmn20:_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_FR9OoJZ5EeSzoOfIrsV7og">
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_TaskNameInputX" name="TaskName"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputXItem" name="Password"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputXItem" name="ConnectTimeout"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UsernameInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UsernameInputXItem" name="Username"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ReadTimeoutInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ReadTimeoutInputXItem" name="ReadTimeout"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputXItem" name="Method"/>
+        <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="Url"/>
+        <bpmn2:dataInput id="DataInput_1" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="Content"/>
+        <bpmn2:dataInput id="DataInput_2" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="ContentType"/>
+        <bpmn2:inputSet id="_FR9OoZZ5EeSzoOfIrsV7og">
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UsernameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ReadTimeoutInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_FR9OopZ5EeSzoOfIrsV7og"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_FR91sJZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_FR91sZZ5EeSzoOfIrsV7og">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_FR91spZ5EeSzoOfIrsV7og">Rest</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_FR91s5Z5EeSzoOfIrsV7og">_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_FR91tJZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_FR91uJZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_FR91vJZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UsernameInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_FR-cwZZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ReadTimeoutInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_FR-cxZZ5EeSzoOfIrsV7og">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_111">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_311">POST</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_111">_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_MethodInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_1">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_3">http://localhost:9998/pizzarestservice/order</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_1">_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_2">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_6">&lt;order>&lt;note>my note&lt;/note>&lt;/order></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_4">DataInput_1</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_3">
+        <bpmn2:targetRef>DataInput_2</bpmn2:targetRef>
+        <bpmn2:assignment id="Assignment_3">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="FormalExpression_9">application/xml</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_7">DataInput_2</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="processStartEvent" targetRef="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F"/>
+    <bpmn2:scriptTask id="_998A46DF-2285-4B12-A816-A1D266B2548F" drools:selectable="true" name="" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>bpmn20:_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44</bpmn2:incoming>
+      <bpmn2:outgoing>bpmn20:_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8</bpmn2:outgoing>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F" targetRef="_998A46DF-2285-4B12-A816-A1D266B2548F"/>
+    <bpmn2:sequenceFlow id="_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="_998A46DF-2285-4B12-A816-A1D266B2548F" targetRef="_0BB55B88-23CA-4078-BA0E-4BD6A3540EE0"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_FR_D0JZ5EeSzoOfIrsV7og" name="rest">
+    <bpmndi:BPMNPlane id="_FR_D0ZZ5EeSzoOfIrsV7og" bpmnElement="rest">
+      <bpmndi:BPMNShape id="_FR_D0pZ5EeSzoOfIrsV7og" bpmnElement="processStartEvent">
+        <dc:Bounds height="30.0" width="30.0" x="15.0" y="150.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_FR_D05Z5EeSzoOfIrsV7og" bpmnElement="_0BB55B88-23CA-4078-BA0E-4BD6A3540EE0">
+        <dc:Bounds height="28.0" width="28.0" x="495.0" y="151.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_FR_D1JZ5EeSzoOfIrsV7og" bpmnElement="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F">
+        <dc:Bounds height="80.0" width="100.0" x="135.0" y="125.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_FR_D1pZ5EeSzoOfIrsV7og" bpmnElement="_998A46DF-2285-4B12-A816-A1D266B2548F">
+        <dc:Bounds height="80.0" width="100.0" x="315.0" y="125.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_FR_D1ZZ5EeSzoOfIrsV7og" bpmnElement="_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6" sourceElement="_FR_D0pZ5EeSzoOfIrsV7og" targetElement="_FR_D1JZ5EeSzoOfIrsV7og">
+        <di:waypoint xsi:type="dc:Point" x="30.0" y="165.0"/>
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="165.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_FR_D15Z5EeSzoOfIrsV7og" bpmnElement="_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44" sourceElement="_FR_D1JZ5EeSzoOfIrsV7og" targetElement="_FR_D1pZ5EeSzoOfIrsV7og">
+        <di:waypoint xsi:type="dc:Point" x="185.0" y="165.0"/>
+        <di:waypoint xsi:type="dc:Point" x="365.0" y="165.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_FR_D2JZ5EeSzoOfIrsV7og" bpmnElement="_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8" sourceElement="_FR_D1pZ5EeSzoOfIrsV7og" targetElement="_FR_D05Z5EeSzoOfIrsV7og">
+        <di:waypoint xsi:type="dc:Point" x="365.0" y="165.0"/>
+        <di:waypoint xsi:type="dc:Point" x="509.0" y="165.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
