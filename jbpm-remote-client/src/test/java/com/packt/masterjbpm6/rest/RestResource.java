@@ -27,6 +27,7 @@ public class RestResource {
 	@Consumes("application/xml")
 	@Produces("application/xml")
 	public Order postXML(Order order) {
+		System.out.println("received order from REST task handler: " + order);
 		order.setNote("POST Order note was:" + order.getNote());
 		return order;
 	}
@@ -36,7 +37,7 @@ public class RestResource {
 	@Consumes("application/xml")
 	@Produces("application/xml")
 	public Order postOrderXML(Order order) {
-		System.out.println("received order from REST: " + order);
+		System.out.println("received order from REST task handler: " + order);
 		order.setNote("POST Order note was:" + order.getNote());
 		return order;
 	}

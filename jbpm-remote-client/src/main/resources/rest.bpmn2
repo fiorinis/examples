@@ -18,7 +18,7 @@
       <drools:import name="com.packt.masterjbpm6.pizza.model.Order"/>
     </bpmn2:extensionElements>
     <bpmn2:property id="order" itemSubjectRef="_orderItem"/>
-    <bpmn2:property id="restresults" itemSubjectRef="_resultsItem"/>
+    <bpmn2:property id="restresults" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem"/>
     <bpmn2:startEvent id="processStartEvent" drools:bgcolor="#9acd32" drools:selectable="true" name="">
       <bpmn2:outgoing>bpmn20:_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6</bpmn2:outgoing>
     </bpmn2:startEvent>
@@ -38,6 +38,7 @@
         <bpmn2:dataInput id="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputX" drools:dtype="String" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="Url"/>
         <bpmn2:dataInput id="DataInput_1" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="Content"/>
         <bpmn2:dataInput id="DataInput_2" itemSubjectRef="__A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_UrlInputXItem" name="ContentType"/>
+        <bpmn2:dataOutput id="DataOutput_1" itemSubjectRef="_resultsItem" name="Result"/>
         <bpmn2:inputSet id="_FR9OoZZ5EeSzoOfIrsV7og">
           <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_PasswordInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_ConnectTimeoutInputX</bpmn2:dataInputRefs>
@@ -49,7 +50,9 @@
           <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
-        <bpmn2:outputSet id="_FR9OopZ5EeSzoOfIrsV7og"/>
+        <bpmn2:outputSet id="_FR9OopZ5EeSzoOfIrsV7og">
+          <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
       </bpmn2:ioSpecification>
       <bpmn2:dataInputAssociation id="_FR91sJZ5EeSzoOfIrsV7og">
         <bpmn2:targetRef>_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F_TaskNameInputX</bpmn2:targetRef>
@@ -98,11 +101,16 @@
           <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="FormalExpression_7">DataInput_2</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>restresults</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="_2D7B8DD2-BF4E-4188-8B62-2E994B2E31F6" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="processStartEvent" targetRef="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F"/>
-    <bpmn2:scriptTask id="_998A46DF-2285-4B12-A816-A1D266B2548F" drools:selectable="true" name="" scriptFormat="http://www.java.com/java">
+    <bpmn2:scriptTask id="_998A46DF-2285-4B12-A816-A1D266B2548F" drools:selectable="true" name="Print results" scriptFormat="http://www.java.com/java">
       <bpmn2:incoming>bpmn20:_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44</bpmn2:incoming>
       <bpmn2:outgoing>bpmn20:_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8</bpmn2:outgoing>
+      <bpmn2:script>System.out.println (&quot;REST call result:&quot;+ restresults);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="_34CCB88A-B8F0-4970-A5E2-068EE8ADDD44" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="_A9A9CBDA-ECD5-4DB5-95C9-6E977810747F" targetRef="_998A46DF-2285-4B12-A816-A1D266B2548F"/>
     <bpmn2:sequenceFlow id="_93E48E8C-DB34-42CC-B3A8-BDD53ADC8AA8" drools:priority="1" drools:bgcolor="#000000" drools:selectable="true" name="" sourceRef="_998A46DF-2285-4B12-A816-A1D266B2548F" targetRef="_0BB55B88-23CA-4078-BA0E-4BD6A3540EE0"/>
