@@ -56,7 +56,7 @@ public class JmsTest extends Assert {
 			responseQ = (Queue) remoteInitialContext
 					.lookup("jms/queue/NapoliRQ");
 		} catch (NamingException e2) {
-			e2.printStackTrace();
+			logger.warn("cannot resolve NapoliRQ");
 		}
 		try {
 			connectionfactory = (ConnectionFactory) remoteInitialContext

@@ -140,10 +140,22 @@
 			<artifactId>kie-remote-common</artifactId>
 			<version>${jbpm.version}</version>
 		</dependency>
-			
+
 		<dependency>
 			<groupId>org.kie.remote</groupId>
 			<artifactId>kie-remote-client</artifactId>
+			<version>${jbpm.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.stream</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-remote-rest-api</artifactId>
 			<version>${jbpm.version}</version>
 			<exclusions>
 				<exclusion>
@@ -180,18 +192,9 @@
 			</exclusions>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.kie.remote.ws</groupId>
-			<artifactId>kie-remote-ws-wsdl-cmd</artifactId>
-			<version>${jbpm.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.xml.stream</groupId>
-					<artifactId>stax-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
- -->
+		<!-- <dependency> <groupId>org.kie.remote.ws</groupId> <artifactId>kie-remote-ws-wsdl-cmd</artifactId> 
+			<version>${jbpm.version}</version> <exclusions> <exclusion> <groupId>javax.xml.stream</groupId> 
+			<artifactId>stax-api</artifactId> </exclusion> </exclusions> </dependency> -->
 		<dependency>
 			<groupId>org.kie.remote.ws</groupId>
 			<artifactId>kie-remote-ws-common</artifactId>
